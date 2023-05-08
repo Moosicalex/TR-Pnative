@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Text, TextInput, StyleSheet, View, Keyboard } from 'react-native'
-import { Icon } from 'react-native-elements'
+import { Icon, SearchBar } from 'react-native-elements'
 
-const SearchBar = () => {
-    const [content, setContent] = useState("enter the text")
+const MapSearchBar = () => {
+    const [content, setContent] = useState("")
     const searchContent = [
         "blue",
         "red",
@@ -13,54 +13,54 @@ const SearchBar = () => {
 
     return (
         <>
-        <View
-            style={styles.searchContainer}>
-            <Icon name='search' style={styles.searchIcon} />
-            <TextInput
-                editable
-                style={styles.searchText}
-                onChangeText={setContent}
-                value={content}
-                onSubmitEditing={Keyboard.dismiss}
-            />
-        </View>
-        <View>
-        {searchContent.map((match) => {
-                if (content && match.includes(content.toLowerCase())) { 
-                return (
-                    <View key={match.id} style={styles.searchResults}>
-                        <Text>
-                            {match}
-                        </Text>
-                    </View>
-                )
-                }      
-            })}
-        </View>
+            <View style={styles.searchBox}>
+                <SearchBar
+                    lightTheme
+                    round
+                    containerStyle={styles.searchContainer}
+                    inputContainerStyle={styles.searchText}
+                    onChangeText={setContent}
+                    value={content}
+                    placeholder={"enter the text"}
+                    onSubmitEditing={Keyboard.dismiss}
+                />
+                <View>
+                    {searchContent.map((match) => {
+                        if (content && match.includes(content.toLowerCase())) {
+                            return (
+                                <View key={match.key} style={styles.searchResults}>
+                                    <Text key={match.key}>
+                                        {match}
+                                    </Text>
+                                </View>
+                            )
+                        }
+                    })}
+                </View>
+            </View>
         </>
-        
+
     )
 }
 
 const styles = StyleSheet.create({
+    searchBox: {
+        position: 'absolute',
+        zIndex: 1
+    },
     searchContainer: {
-        width: 200,
+        marginTop: 100,
+        paddingBottom: 40,
         height: 30,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        borderStyle: 'solid',
-        borderRadius: 30,
-        borderWidth: 1
+        width: 200,
+        backgroundColor: '#fff',
     },
     searchIcon: {
         paddingLeft: 10,
         paddingTop: 1
     },
     searchText: {
-        paddingTop: 4,
-        flex: 1,
-        width: 100,
+        width: 180,
         height: 30
     },
     searchResults: {
@@ -77,4 +77,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default SearchBar
+export default MapSearchBar
