@@ -1,8 +1,10 @@
 import React from 'react';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image, StyleSheet, Text, Button} from 'react-native';
 import Searchbar from './searchbar.js';
 
-function Topbar() {
+function Topbar(props) {
+
+navigation = props.navigation;
 
 const styles = StyleSheet.create({
     container: {
@@ -21,11 +23,17 @@ const styles = StyleSheet.create({
     return (
         <>
         <View style={styles.container}>
-              <Image
+            <Button
+                title="Go to Profile page"
+                onPress={() =>
+                    navigation.navigate('Profile')
+                }
+            />
+            <Image
                 style={styles.bar_logo}
                 source={require('trip/assets/greenLogo.png')}
-              />
-              <Searchbar/>
+            />
+            <Searchbar/>
         </View>
         </>
     );
