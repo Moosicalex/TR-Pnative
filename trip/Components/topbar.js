@@ -1,20 +1,22 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text} from 'react-native';
+import Searchbar from './searchbar.js';
 
 function Topbar() {
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '10%'
-    //resizeMode: 'center',
-  },
-  bar_logo: {
-      height: 100,
-      width: 200,
-      resizeMode: 'cover',
-  }
+    container: {
+        paddingTop: 15,
+        backgroundColor: 'green',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '15%',
+    },
+    bar_logo: {
+        height: 50,
+        width: 100,
+        resizeMode: 'cover',
+    }
 });
     return (
         <>
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
                 style={styles.bar_logo}
                 source={require('trip/assets/greenLogo.png')}
               />
+              <Searchbar/>
         </View>
         </>
     );
