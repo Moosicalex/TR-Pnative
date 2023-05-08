@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image, StyleSheet, Text, TextInput} from 'react-native';
+import SearchBar from './searchbar';
 
 function Topbar() {
 
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
                 style={styles.bar_logo}
                 source={require('trip/assets/greenLogo.png')}
               />
+              <SearchBar/>
         </View>
         </>
     );
