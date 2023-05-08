@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
                 name="Home"
                 component={Home}
                 options={{'headerShown':false}}
-            /> 
+            />
             <Stack.Screen
                 name="Profile"
                 options={{'headerShown':false}}
