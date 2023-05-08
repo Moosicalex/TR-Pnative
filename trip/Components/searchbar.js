@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
-import { TextInput, StyleSheet, View, Keyboard } from 'react-native'
+import { Text, TextInput, StyleSheet, View, Keyboard } from 'react-native'
 import { Icon } from 'react-native-elements'
 
 const SearchBar = () => {
-    const [content, setContent] = useState("enter text")
+    const [content, setContent] = useState("enter the text")
+    const searchContent = [
+        "blue",
+        "red",
+        "green",
+        "yellow"
+    ]
 
     return (
+        <>
         <View
             style={styles.searchContainer}>
             <Icon name='search' style={styles.searchIcon} />
@@ -17,6 +24,21 @@ const SearchBar = () => {
                 onSubmitEditing={Keyboard.dismiss}
             />
         </View>
+        <View>
+        {searchContent.map((match) => {
+                if (content && match.includes(content.toLowerCase())) { 
+                return (
+                    <View key={match.id} style={styles.searchResults}>
+                        <Text>
+                            {match}
+                        </Text>
+                    </View>
+                )
+                }      
+            })}
+        </View>
+        </>
+        
     )
 }
 
@@ -39,7 +61,17 @@ const styles = StyleSheet.create({
         paddingTop: 4,
         flex: 1,
         width: 100,
-        height: 20
+        height: 30
+    },
+    searchResults: {
+        width: 160,
+        height: 30,
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        borderStyle: 'solid',
+        borderColor: '#B0B0B0',
+        borderBottomWidth: 1
     },
 
 
