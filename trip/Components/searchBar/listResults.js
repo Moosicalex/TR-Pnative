@@ -9,11 +9,13 @@ const ListResults = ({ searchPhrase, fakeData }) => {
             <Text style={styles.title}>{name}</Text>
         </View>
     )
-    
-    const renderItem = ({item}) => {
-        if (searchPhrase === "w") {
+
+
+    // takes an item parameter (similar to map() operation) that returns conditional components in a list structure
+    const renderItem = ({ item }) => {
+        if (searchPhrase === "") {
             return <Result name={item.name} />;
-          }
+        }
         if (searchPhrase.length >= 2 && item.name.toLowerCase().includes(searchPhrase.toLowerCase())) {
             return <Result name={item.name} />
         }
