@@ -16,12 +16,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     },
     container_exclude: {
-        //paddingTop: 20,
-        //backgroundColor: 'green',
         justifyContent: 'space-around',
-        //alignItems: 'center',
         flexDirection: 'row',
-        //height: '10%',
     },
     bar_logo: {
         height: 50,
