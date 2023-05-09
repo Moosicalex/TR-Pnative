@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text, TextInput} from 'react-native';
-import SearchBar from './searchbar';
+import SearchBar from './searchBar/searchbar';
 
 function Topbar() {
 
