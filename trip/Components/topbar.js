@@ -1,6 +1,8 @@
 import React from 'react';
-import {View, Image, StyleSheet, Text, Button, TouchableHighlight} from 'react-native';
+import {View, Image, StyleSheet, Text, Button, TouchableHighlight, Col} from 'react-native';
 import Searchbar from './searchbar.js';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { IonButton, Ionicons } from '@expo/vector-icons';
 
 function Topbar(props) {
 
@@ -18,13 +20,15 @@ const styles = StyleSheet.create({
         height: 50,
         width: 100,
         resizeMode: 'cover',
+    },
+    profile_button: {
+
     }
 });
     return (
         <>
         <View style={styles.container}>
-            <Button
-                title="Go to Profile page"
+            <Icon name="md-menu" size={32} color="white"
                 onPress={() =>
                     navigation.navigate('Profile')
                 }
