@@ -8,13 +8,20 @@ function Topbar(props) {
 navigation = props.navigation;
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 15,
+    container_include: {
+        paddingTop: 20,
+        flexDirection: 'column',
         backgroundColor: 'green',
-        justifyContent: 'space-around',
-        alignItems: 'center',
         height: '15%',
+        justifyContent: 'flex-end'
+    },
+    container_exclude: {
+        //paddingTop: 20,
+        //backgroundColor: 'green',
+        justifyContent: 'space-around',
+        //alignItems: 'center',
         flexDirection: 'row',
+        //height: '10%',
     },
     bar_logo: {
         height: 50,
@@ -27,29 +34,28 @@ const styles = StyleSheet.create({
 });
     return (
         <>
-        <View style={styles.container}>
-            <Icon name="torso" type="foundation" size={40} color="white"
-                onPress={() =>
-                    navigation.navigate('Profile')
-                }
-            />
-            <TouchableHighlight
-                onPress={() =>
-                    navigation.navigate('Home')
-                }
-            >
-                <Image
-                    style={styles.bar_logo}
-                    source={require('trip/assets/greenLogo.png')}
-                />
-            </TouchableHighlight>
-            <Icon name='map' type='foundation' size={40} color="white"
-                onPress={() =>
-                    navigation.navigate('Map')
-                }
-            />
-            <Searchbar/>
-        </View>
+            <View style={styles.container_include}>
+                <View style={styles.container_exclude}>
+                    <Icon name="torso" type="foundation" size={40} color="white"
+                        onPress={() =>
+                            navigation.navigate('Profile')
+                        }
+                    />
+                    <TouchableHighlight
+                        onPress={() =>
+                            navigation.navigate('Home')
+                        }
+                    >
+                        <Image style={styles.bar_logo} source={require('trip/assets/greenLogo.png')} />
+                    </TouchableHighlight>
+                    <Icon name='map' type='foundation' size={40} color="white"
+                        onPress={() =>
+                            navigation.navigate('Map')
+                        }
+                    />
+                </View>
+                <Searchbar/>
+            </View>
         </>
     );
 }
