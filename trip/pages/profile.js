@@ -6,7 +6,7 @@ function Profile(props) {
 
     return (
         <>
-        <Topbar/>
+        <Topbar navigation={navigation}/>
         <Text>{props.username}</Text>
         </>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, StyleSheet, Text, Button} from 'react-native';
+import {View, Image, StyleSheet, Text, Button, TouchableHighlight} from 'react-native';
 import Searchbar from './searchbar.js';
 
 function Topbar(props) {
@@ -29,10 +29,16 @@ const styles = StyleSheet.create({
                     navigation.navigate('Profile')
                 }
             />
-            <Image
-                style={styles.bar_logo}
-                source={require('trip/assets/greenLogo.png')}
-            />
+            <TouchableHighlight
+                onPress={() =>
+                    navigation.navigate('Home')
+                }
+            >
+                <Image
+                    style={styles.bar_logo}
+                    source={require('trip/assets/greenLogo.png')}
+                />
+            </TouchableHighlight>
             <Searchbar/>
         </View>
         </>
