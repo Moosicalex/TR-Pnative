@@ -4,6 +4,9 @@ import { Icon, SearchBar } from 'react-native-elements'
 
 const MapSearchBar = ({searchPhrase, setSearchPhrase}) => {
 
+    // uses native element searchbar component with overwritten style changes
+    // onSubmitEditing dismissed keyboard when user hits enter
+
     return (
         <>
 

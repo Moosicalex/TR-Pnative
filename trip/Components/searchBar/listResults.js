@@ -1,12 +1,13 @@
 import React from "react";
-import {FlatList, StyleSheet, Text, View, SafeAreaView} from "react-native"
+import { FlatList, StyleSheet, Text, View, SafeAreaView } from "react-native"
 
-const ListResults = ({searchPhrase, fakeData}) => {
-    
-    const Result = ({name}) => (
+
+const ListResults = ({ searchPhrase, fakeData }) => {
+
+    const Result = ({ name }) => (
         <View>
-                    <Text style={styles.title}>{name}</Text>
-                </View>
+            <Text style={styles.title}>{name}</Text>
+        </View>
     )
     
     const renderItem = ({item}) => {
@@ -17,13 +18,15 @@ const ListResults = ({searchPhrase, fakeData}) => {
             return <Result name={item.name} />
         }
     }
+
+    // data is the total dataset, renderItem is a function that returns conditional data, key extractor gets id for each unique child
     return (
         <SafeAreaView style={styles.listContainer}>
-                <FlatList 
+            <FlatList
                 data={fakeData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
-                />
+            />
         </SafeAreaView>
     )
 }
@@ -32,21 +35,21 @@ export default ListResults
 
 const styles = StyleSheet.create({
     listContainer: {
-      margin: 10,
-      height: "85%",
-      width: "100%",
-      justifyContent: "center",
-      alignItems: "flex-start",
+        margin: 10,
+        height: "85%",
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "flex-start",
     },
     item: {
-      margin: 30,
-      borderBottomWidth: 2,
-      borderBottomColor: "lightgrey"
+        margin: 30,
+        borderBottomWidth: 2,
+        borderBottomColor: "lightgrey"
     },
     title: {
-      fontSize: 20,
-      fontWeight: "bold",
-      marginBottom: 5,
-      fontStyle: "italic",
+        fontSize: 20,
+        fontWeight: "bold",
+        marginBottom: 5,
+        fontStyle: "italic",
     },
-  });
+});

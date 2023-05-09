@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
-import {
-    StyleSheet,
-    Text,
-    SafeAreaView,
-    ActivityIndicator,
-} from "react-native";
+import React, { useState } from "react";
+import {StyleSheet,SafeAreaView,} from "react-native";
 import ListResults from "./listResults";
 import MapSearchBar from "./searchbar";
+
+// Container component that hosts the individual searchBar and result list
 
 const SearchContainer = () => {
     const [searchPhrase, setSearchPhrase] = useState("");

@@ -3,6 +3,9 @@ import {View, Image, StyleSheet, Text, Button, KeyboardAvoidingView} from 'react
 import Searchbar from './searchBar/searchbar.js';
 import SearchContainer from './searchBar/searchContainer.js';
 
+
+// KeyboardAvoidingView prevents components from being lifted by the keyboard popping up
+
 function Topbar(props) {
 
 navigation = props.navigation;
