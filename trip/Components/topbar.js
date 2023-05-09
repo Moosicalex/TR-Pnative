@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text, Button, TouchableHighlight, Col} from 'react-native';
 import Searchbar from './searchbar.js';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Icon } from 'react-native-elements'
 
 function Topbar(props) {
 
@@ -11,9 +11,10 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 15,
         backgroundColor: 'green',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         height: '15%',
+        flexDirection: 'row',
     },
     bar_logo: {
         height: 50,
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     return (
         <>
         <View style={styles.container}>
-            <Icon name="user" size={32} color="white"
+            <Icon name="torso" type="foundation" size={40} color="white"
                 onPress={() =>
                     navigation.navigate('Profile')
                 }
@@ -42,6 +43,11 @@ const styles = StyleSheet.create({
                     source={require('trip/assets/greenLogo.png')}
                 />
             </TouchableHighlight>
+            <Icon name='map' type='foundation' size={40} color="white"
+                onPress={() =>
+                    navigation.navigate('Map')
+                }
+            />
             <Searchbar/>
         </View>
         </>
