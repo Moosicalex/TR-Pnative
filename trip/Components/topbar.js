@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
 });
     return (
         <>
-        <KeyboardAvoidingView>
         <View style={styles.container}>
             <Button
                 title="Go to Profile page"
@@ -50,7 +49,6 @@ const styles = StyleSheet.create({
            
         </View>
         <SearchContainer/>
-        </KeyboardAvoidingView>
         </>
     );
 }
