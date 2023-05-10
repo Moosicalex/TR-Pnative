@@ -1,5 +1,5 @@
 import {React, useState} from 'react';
-import {View, Image, StyleSheet, Text, TextInput, SafeAreaView} from 'react-native';
+import {View, Image, StyleSheet, Text, TextInput, SafeAreaView, ImageBackground} from 'react-native';
 import Topbar from 'trip/Components/topbar.js';
 
 function Login({navigation}) {
@@ -15,18 +15,22 @@ function Login({navigation}) {
             backgroundColor: 'blue'
         },
         container: {
-            backgroundColor: 'gray',
             flexDirection: 'column',
             justifyContent: 'center',
-            height: '85%'
+            height: '90%'
+        },
+        login: {
+            flexDirection: 'column',
         },
 
     })
 
+    //const background = {require('trip/assets/background.jpg')};
+
     return (
-        <>
+        <SafeAreaView style={styles.login}>
             <Topbar navigation={navigation}/>
-            <SafeAreaView style={styles.container} >
+            <ImageBackground source={require('trip/assets/background.jpg')} resizeMode="cover" style={styles.container} >
                 <SafeAreaView style={styles.input_container}>
                     <TextInput
                         style={styles.input}
@@ -34,8 +38,8 @@ function Login({navigation}) {
                         value={email}
                     />
                 </SafeAreaView>
-            </SafeAreaView>
-        </>
+            </ImageBackground>
+        </SafeAreaView>
     );
 }
 
