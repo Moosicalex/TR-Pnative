@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
         width: "100%",
         justifyContent: "center",
         alignItems: "flex-start",
+        //position: 'absolute'
     },
     item: {
         margin: 30,
