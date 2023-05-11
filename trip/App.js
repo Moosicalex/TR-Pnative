@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Home from 'trip/pages/home.js'
 import Profile from 'trip/pages/profile.js'
 import MapPage from 'trip/pages/mappage.js';
+import Login from 'trip/pages/login.js'
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -21,7 +22,7 @@ const Stack = createNativeStackNavigator();
                 name="Profile"
                 options={{'headerShown':false}}
             >
-            {props => (<Profile username={"Johnny"}/>)}
+            {props => (<Login username={"Johnny"}/>)}
             </Stack.Screen>
             <Stack.Screen
                 name="Map"
