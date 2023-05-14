@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import {View, Image, SafeAreaView, StyleSheet, Text} from 'react-native';
 import Topbar from 'trip/Components/topbar.js';
 import {useQuery} from '@apollo/client';
@@ -6,13 +6,26 @@ import {GET_TRIP_USER_BY_EMAIL} from 'trip/Graphiql/queries.js'
 
 function Profile(props) {
 
-    //const {data: user_data, loading: user_loading, error: user_error} = useQuery(GET_TRIP_USER_BY_EMAIL, {
-     //   variables: {email: props.email},
-     //   onCompleted: update_found
-    //})
+    const [user, setUser] = useState(
+
+        {
+            first_name: "",
+            last_name: "",
+            email: "",
+            password: "",
+            phone_number: "",
+            user_id: "",
+            user_name: "",
+        }
+    );
+
+    const {data: user_data, loading: user_loading, error: user_error} = useQuery(GET_TRIP_USER_BY_EMAIL, {
+        variables: {email: props.email},
+        onCompleted: update_found
+    })
 
     function update_found() {
-    console.log(user_data)
+        setUser(user_data.trip_user[0])
     }
     
 
@@ -30,7 +43,7 @@ function Profile(props) {
     })
 
     return (
-        true ? 
+        user_loading ? 
         <>
             <SafeAreaView style={styles.loading_container} >
                 <Text>Loading</Text>
@@ -40,7 +53,7 @@ function Profile(props) {
         :
         <>
         <Topbar navigation={navigation}/>
-        <Text>{props.username}</Text>
+        <Text>{user.first_name}</Text>
         </>
     );
 }
