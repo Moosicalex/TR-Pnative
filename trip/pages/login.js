@@ -1,6 +1,8 @@
 import {React, useState} from 'react';
 import {View, Image, StyleSheet, Text, TextInput, SafeAreaView, ImageBackground} from 'react-native';
 import Topbar from 'trip/Components/topbar.js';
+import { Icon } from 'react-native-elements'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 function Login({navigation}) {
 
@@ -22,6 +24,9 @@ function Login({navigation}) {
         login: {
             flexDirection: 'column',
         },
+        login_button: {
+            
+        }, 
 
     })
 
@@ -37,6 +42,18 @@ function Login({navigation}) {
                         onChangeText={setEmail}
                         value={email}
                     />
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={setPassword}
+                        value={password}
+                    />
+                    <View style={styles.login_button}>
+                        <Icon name='map' type='foundation' size={40} color="white"
+                            onPress={() =>
+                                navigation.navigate('Map')
+                            }
+                        />
+                    </View>
                 </SafeAreaView>
             </ImageBackground>
         </SafeAreaView>

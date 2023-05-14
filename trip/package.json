@@ -9,11 +9,13 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.14",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "expo": "~48.0.15",
     "expo-status-bar": "~1.4.4",
+    "graphql": "^15.8.0",
     "react": "18.2.0",
     "react-native": "0.71.7",
     "react-native-elements": "^3.4.3",
@@ -24,7 +26,8 @@
     "react-native-screens": "~3.20.0",
     "react-native-vector-icons": "^9.2.0",
     "react-navigation": "^4.4.4",
-    "vector-icons": "^0.1.0"
+    "vector-icons": "^0.1.0",
+    "undefined": "apollo/client"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
