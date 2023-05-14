@@ -2,7 +2,6 @@ import {React, useState} from 'react';
 import {View, Image, StyleSheet, Text, TextInput, SafeAreaView, ImageBackground} from 'react-native';
 import Topbar from 'trip/Components/topbar.js';
 import { Icon } from 'react-native-elements'
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 function Login({navigation}) {
 
