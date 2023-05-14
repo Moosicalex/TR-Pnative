@@ -47,10 +47,16 @@ const Stack = createNativeStackNavigator();
               options={{'headerShown':false}}
           />
           <Stack.Screen
-              name="Profile"
+              name="Login"
               options={{'headerShown':false}}
           >
           {props => (<Login username={"Johnny"}/>)}
+          </Stack.Screen>
+          <Stack.Screen
+              name="Profile"
+              options={{'headerShown':false}}
+          >
+          {props => (<Profile email={"moosicalex@gmail.com"}/>)}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
