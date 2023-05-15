@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import MapView, {Marker} from 'react-native-maps'
+import { StyleSheet, SafeAreaView, View, Text } from 'react-native'
 
 const Map = ({userCenterSearch}) => {
 
@@ -6,6 +8,7 @@ const Map = ({userCenterSearch}) => {
     const [lng, setLng] = useState(null)
     const [onLoad, setOnLoad] = useState(false)
     const [onMount, setOnMount] = useState(false)
+    const [ID, setID] = useState(0)
     
     const getRnd = (min, max) => {
         return Math.floor(Math.random() * (max - min) ) + min
@@ -17,6 +20,11 @@ const Map = ({userCenterSearch}) => {
         setLng(userCenterSearch.geometry.location.lng)
         incrID()
         setOnMount(true)
+    }
+
+    const incrID = () => {
+        setID(ID + 1)
+        return ID - 1
     }
 
 
@@ -36,6 +44,9 @@ const Map = ({userCenterSearch}) => {
                     }}
                     onMapReady={() => setOnLoad(true)}
                 >
+                    {onLoad && <Marker
+                key={0}
+                coordinate={{latitude:lat, longitude:lng}}
                 />}
                     </MapView>}
                 
