@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
-import MapView from 'react-native-maps'
-import { StyleSheet, SafeAreaView, View } from 'react-native'
 
-const Map = () => {
+const Map = ({userCenterSearch}) => {
 
     const [lat, setLat] = useState(null)
     const [lng, setLng] = useState(null)
     const [onLoad, setOnLoad] = useState(false)
+    const [onMount, setOnMount] = useState(false)
     
     const getRnd = (min, max) => {
         return Math.floor(Math.random() * (max - min) ) + min
+    }
+
+    const readyMap = () => {
+        console.log(userCenterSearch.geometry.location.lat)
+        setLat(userCenterSearch.geometry.location.lat)
+        setLng(userCenterSearch.geometry.location.lng)
+        incrID()
+        setOnMount(true)
     }
 
 
@@ -17,9 +24,9 @@ const Map = () => {
     return (
         
         <SafeAreaView>
-            {!onLoad ? (setLat(getRnd(-90,90)), setLng(getRnd(-120,120)), setOnLoad(true)) : null}
+            {!onMount ? (readyMap(), <Text>Loading....</Text>) : null}
             <View>
-                {onLoad && <MapView
+                {onMount && <MapView
                     style={styles.mapStyle}
                     initialRegion={{
                         latitude: lat,
@@ -27,7 +34,11 @@ const Map = () => {
                         latitudeDelta: 13,
                         longitudeDelta: 13,
                     }}
+                    onMapReady={() => setOnLoad(true)}
+                >
                 />}
+                    </MapView>}
+                
                 
             </View>
         </SafeAreaView>
