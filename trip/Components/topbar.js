@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
                 </View>
                
             </View>
-        <SearchContainer/>
         </>
     );
 }
