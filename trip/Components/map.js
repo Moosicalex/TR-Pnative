@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import MapView, {Marker} from 'react-native-maps'
 import { StyleSheet, SafeAreaView, View, Text } from 'react-native'
 
@@ -9,6 +9,8 @@ const Map = ({userCenterSearch}) => {
     const [onLoad, setOnLoad] = useState(false)
     const [onMount, setOnMount] = useState(false)
     const [ID, setID] = useState(0)
+
+    const mapRef = React.useRef()
     
     const getRnd = (min, max) => {
         return Math.floor(Math.random() * (max - min) ) + min
@@ -16,6 +18,7 @@ const Map = ({userCenterSearch}) => {
 
     const readyMap = () => {
         console.log(userCenterSearch.geometry.location.lat)
+        console.log(userCenterSearch.geometry.location.lng)
         setLat(userCenterSearch.geometry.location.lat)
         setLng(userCenterSearch.geometry.location.lng)
         incrID()
@@ -27,6 +30,13 @@ const Map = ({userCenterSearch}) => {
         return ID - 1
     }
 
+    const initialRegion = {
+        latitude: lat,
+        longitude: lng,
+        latitudeDelta: 13,
+        longitudeDelta: 13,
+    }
+
 
 
     return (
@@ -35,10 +45,11 @@ const Map = ({userCenterSearch}) => {
             {!onMount ? (readyMap(), <Text>Loading....</Text>) : null}
             <View>
                 {onMount && <MapView
+                    ref={mapRef}
                     style={styles.mapStyle}
                     initialRegion={{
-                        latitude: lat,
-                        longitude: lng,
+                        latitude: lat+1,
+                        longitude: lng+1,
                         latitudeDelta: 13,
                         longitudeDelta: 13,
                     }}
@@ -47,10 +58,13 @@ const Map = ({userCenterSearch}) => {
                     {onLoad && <Marker
                 key={0}
                 coordinate={{latitude:lat, longitude:lng}}
-                />}
-                    </MapView>}
-                
-                
+                title={userCenterSearch.formulated_address}
+                on
+                />
+                }
+                </MapView>} 
+                {onLoad && mapRef.current?.animateToRegion(initialRegion, 500)}
+                    
             </View>
         </SafeAreaView>
     )
