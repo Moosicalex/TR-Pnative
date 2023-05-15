@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { Text, TextInput, StyleSheet, View, Keyboard } from 'react-native'
 import { Icon, SearchBar, Input } from 'react-native-elements'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { useNavigation } from '@react-navigation/native';
 
-const MapSearchBar = ({ searchPhrase, setSearchPhrase }) => {
+const MapSearchBar = (props) => {
 
     // uses native element searchbar component with overwritten style changes
     // onSubmitEditing dismissed keyboard when user hits enter
@@ -11,13 +12,15 @@ const MapSearchBar = ({ searchPhrase, setSearchPhrase }) => {
     const [error, setError] = useState(null)
     const [location, setLocation] = useState(null)
 
+    const navigation = useNavigation();
+
     const searchBar = <SearchBar
         lightTheme
         round
         containerStyle={styles.searchContainer}
         inputContainerStyle={styles.searchText}
-        onChangeText={setSearchPhrase}
-        value={searchPhrase}
+        onChangeText={props.setSearchPhrase}
+        value={props.searchPhrase}
         placeholder={"enter the text"}
         onSubmitEditing={Keyboard.dismiss}
     />
@@ -32,15 +35,16 @@ const MapSearchBar = ({ searchPhrase, setSearchPhrase }) => {
                 }}
                 placeholder='Enter location to search'
                 onPress={(data, details) => {
-                    console.log(details), setSearchPhrase(data.description), setLocation(details.geometry.location)
+                    console.log(details), props.setSearchPhrase(data.description), setLocation(details.geometry.location),
+                    navigation.navigate('Map', {details:details})
                 }}
                 onFail={(error) => setError(error)}
                 textInputProps={{
-                    onChangeText: setSearchPhrase,
-                    value: searchPhrase
+                    onChangeText: props.setSearchPhrase,
+                    value: props.searchPhrase
                 }}
             />
-            {searchPhrase && <Text>{searchPhrase}</Text>}
+            {props.searchPhrase && <Text>{props.searchPhrase}</Text>}
             {location && <Text>lat: {location.lat}, lng: {location.lng}</Text>}
 
         </View>
