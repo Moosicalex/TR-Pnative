@@ -1,7 +1,11 @@
 import React from 'react';
-import {View, Image, StyleSheet, Text, Button, TouchableHighlight, Col} from 'react-native';
-import Searchbar from './searchbar.js';
+import {View, Image, StyleSheet, Text, Button, TouchableHighlight, Col, KeyboardAvoidingView} from 'react-native';
+import Searchbar from './searchBar/searchbar.js';
 import { Icon } from 'react-native-elements'
+import SearchContainer from './searchBar/searchContainer.js';
+
+
+// KeyboardAvoidingView prevents components from being lifted by the keyboard popping up
 
 function Topbar(props) {
 
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
                         onPress={() =>
                             navigation.navigate('Profile')
                         }
-                    />
+            />
                     <TouchableHighlight
                         onPress={() =>
                             navigation.navigate('Home')
@@ -50,8 +54,9 @@ const styles = StyleSheet.create({
                         }
                     />
                 </View>
-                <Searchbar/>
+               
             </View>
+        <SearchContainer/>
         </>
     );
 }
