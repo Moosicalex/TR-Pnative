@@ -3,6 +3,7 @@ import {View, Image, SafeAreaView, StyleSheet, Text} from 'react-native';
 import Topbar from 'trip/Components/topbar.js';
 import {useQuery} from '@apollo/client';
 import {GET_TRIP_USER_BY_EMAIL} from 'trip/Graphiql/queries.js'
+import SavedActivities from 'trip/Components/saved_activities.js'
 
 function Profile(props) {
 
@@ -54,6 +55,7 @@ function Profile(props) {
         <>
         <Topbar navigation={navigation}/>
         <Text>{user.first_name}</Text>
+        {user.user_id ? <SavedActivities id={user.user_id} /> : <Text>Not here baby </Text>}
         </>
     );
 }
