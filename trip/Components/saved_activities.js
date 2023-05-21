@@ -40,7 +40,7 @@ const SavedActivities = (props) => {
         console.log("button was pressed")
         details.geometry.location.lat = parseFloat(drop_value.split("|")[1])
         details.geometry.location.lng = parseFloat(drop_value.split("|")[2])
-        navigation.navigate('Map', {details:details})
+        navigation.navigate('Map', {details:details}) //--TODO-- eventually we will need to be adding the saved activity to a trip which will probably change the way we're doing this
     }
     
     return(
