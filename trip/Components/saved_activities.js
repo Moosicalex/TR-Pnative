@@ -7,7 +7,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 const SavedActivities = (props) => {
 
     const user_id = props.id;
-    const [drop_value, setDrop_value] = useState([]);
+    const [drop_value, setDrop_value] = useState({label: 'Saved Activities', value: 'select'});
     const [selected, setSelected] = useState("");
     const [bool, setBool] = useState(false);
     const [open, setOpen] = useState(false);
@@ -35,6 +35,7 @@ const SavedActivities = (props) => {
     return(
         activity_data ? 
             <>
+                <Text>Saved Activities</Text>
                 <DropDownPicker
                     open={open}
                     value={drop_value}
