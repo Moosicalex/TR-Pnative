@@ -38,8 +38,8 @@ const SavedActivities = (props) => {
     //button that navigates to the map page --TODO-- this should also pass information about the selected saved activity
     const buttonPress = () => {
         console.log("button was pressed")
-        details.geometry.location.lat = drop_value.split("|")[1]
-        details.geometry.location.lng = drop_value.split("|")[2]
+        details.geometry.location.lat = parseFloat(drop_value.split("|")[1])
+        details.geometry.location.lng = parseFloat(drop_value.split("|")[2])
         navigation.navigate('Map', {details:details})
     }
     
