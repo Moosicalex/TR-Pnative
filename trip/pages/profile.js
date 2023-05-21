@@ -55,7 +55,7 @@ function Profile(props) {
         <>
         <Topbar navigation={navigation}/>
         <Text>{user.first_name}</Text>
-        {user.user_id ? <SavedActivities id={user.user_id} /> : <Text>Not here baby </Text>}
+        {user.user_id ? <SavedActivities id={user.user_id} navigate={props.navigation}/> : <Text>Not here baby </Text>}
         </>
     );
 }

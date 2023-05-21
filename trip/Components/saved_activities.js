@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {View, Image, SafeAreaView, StyleSheet, Text} from 'react-native';
+import {View, Image, SafeAreaView, StyleSheet, Text, Button} from 'react-native';
 import {useQuery} from '@apollo/client';
 import {GET_SAVED_ACTIVITY} from 'trip/Graphiql/queries.js'
 import DropDownPicker from 'react-native-dropdown-picker';
 
 const SavedActivities = (props) => {
+
+    const navigate = props.navigate;
 
     const user_id = props.id;
     const [drop_value, setDrop_value] = useState({label: 'Saved Activities', value: 'select'});
@@ -31,6 +33,11 @@ const SavedActivities = (props) => {
     useEffect(() => {
       if(activity_data){updateItems()}
     }, [activity_data])
+
+    const buttonPress = () => {
+        console.log("button was pressed")
+        navigation.navigate('Map')
+    }
     
     return(
         activity_data ? 
@@ -44,6 +51,7 @@ const SavedActivities = (props) => {
                     setValue={setDrop_value}
                     setItems={setItems}
                 />
+                <Button title="use activity" onPress={buttonPress}></Button>
             </>
         :   
         <Text>Not here yet</Text>
