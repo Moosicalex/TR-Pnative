@@ -13,7 +13,8 @@ const SavedActivities = (props) => {
     const [selected, setSelected] = useState("");
     const [bool, setBool] = useState(false);
     const [open, setOpen] = useState(false);
-    const [items, setItems] = useState([{label: 'something', value: 'something'}, {label: 'something else', value: 'something else'}]); 
+    const [items, setItems] = useState([{label: 'something', value: 'something'}, {label: 'something else', value: 'something else'}]);
+    const [details, setDetails] = useState({name: "details", geometry: {location: {lat: null, lng: null}}}); 
     
     //call to the database for a list of saved activities tied to a given user id
     const {loading: activity_loading, error: activity_error, data: activity_data } = useQuery(GET_SAVED_ACTIVITY, {
@@ -37,7 +38,9 @@ const SavedActivities = (props) => {
     //button that navigates to the map page --TODO-- this should also pass information about the selected saved activity
     const buttonPress = () => {
         console.log("button was pressed")
-        navigation.navigate('Map')
+        details.geometry.location.lat = drop_value.split("|")[1]
+        details.geometry.location.lng = drop_value.split("|")[2]
+        navigation.navigate('Map', {details:details})
     }
     
     return(
