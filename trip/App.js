@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from 'trip/pages/home.js'
 import Profile from 'trip/pages/profile.js'
+import MapPage from 'trip/pages/mappage.js';
 import Login from 'trip/pages/login.js'
 import MapPage from 'trip/pages/mappage.js'
 import {NavigationContainer} from '@react-navigation/native';
