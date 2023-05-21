@@ -24,7 +24,7 @@ const Map = ({userCenterSearch}) => {
     }
 
     useEffect(() => {
-        MapService("place", "textsearch", "json", "food", userCenterSearch.geometry.location)
+        setMarkerList(MapService("place", "textsearch", "json", "food", userCenterSearch.geometry.location))
       }, []);
 
     const readyMap = () => {
@@ -38,6 +38,7 @@ const Map = ({userCenterSearch}) => {
     
 
     const setMarkers = () => {
+
     }
 
     const incrID = () => {
@@ -76,6 +77,15 @@ const Map = ({userCenterSearch}) => {
                 title={userCenterSearch.formulated_address}
                 />
                 }
+                {markerList && (
+                    console.log("location 1 ----------"),
+                    markerList.map((marker) => 
+                    <Marker
+                    coordinate={{latitude:marker.geometry.location.lat, longitude:marker.geometry.location.lng}}
+                    title={marker.name}
+                    />
+                    )
+                )}
                 </MapView>} 
                 {onLoad && mapRef.current?.animateToRegion(initialRegion, 500)}
                     
