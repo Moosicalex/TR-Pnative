@@ -7,8 +7,8 @@ import SavedActivities from 'trip/Components/saved_activities.js'
 
 function Profile(props) {
 
+    //dummy item that is just a placeholder
     const [user, setUser] = useState(
-
         {
             first_name: "",
             last_name: "",
@@ -20,6 +20,7 @@ function Profile(props) {
         }
     );
 
+    //database query that calls for all of the info of a user with a given email
     const {data: user_data, loading: user_loading, error: user_error} = useQuery(GET_TRIP_USER_BY_EMAIL, {
         variables: {email: props.email},
         onCompleted: update_found

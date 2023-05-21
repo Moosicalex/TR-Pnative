@@ -34,6 +34,7 @@ const SavedActivities = (props) => {
       if(activity_data){updateItems()}
     }, [activity_data])
 
+    //button that navigates to the map page --TODO-- this should also pass information about the selected saved activity
     const buttonPress = () => {
         console.log("button was pressed")
         navigation.navigate('Map')
@@ -51,7 +52,7 @@ const SavedActivities = (props) => {
                     setValue={setDrop_value}
                     setItems={setItems}
                 />
-                <Button title="use activity" onPress={buttonPress}></Button>
+                <Button title="use activity" onPress={buttonPress}></Button>{/*we can worry about formatting later*/}
             </>
         :   
         <Text>Not here yet</Text>
