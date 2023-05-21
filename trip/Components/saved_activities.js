@@ -9,7 +9,7 @@ const SavedActivities = (props) => {
     const navigate = props.navigate;
 
     const user_id = props.id;
-    const [drop_value, setDrop_value] = useState({label: 'Saved Activities', value: 'select'});
+    const [drop_value, setDrop_value] = useState(null);
     const [selected, setSelected] = useState("");
     const [bool, setBool] = useState(false);
     const [open, setOpen] = useState(false);
