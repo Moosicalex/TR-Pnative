@@ -1,6 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import MapView, {Marker} from 'react-native-maps'
 import { StyleSheet, SafeAreaView, View, Text, Dimensions } from 'react-native'
+import RNGooglePlaces from 'react-native-google-places';
+import { MapService } from './mapService';
 
 const Map = ({userCenterSearch}) => {
 
@@ -13,6 +15,7 @@ const Map = ({userCenterSearch}) => {
     const [ID, setID] = useState(0)
     const LATITUDE_DELTA = 0.28;
     const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
+    const [markerList, setMarkerList] = useState()
 
     const mapRef = React.useRef()
     
@@ -20,13 +23,21 @@ const Map = ({userCenterSearch}) => {
         return Math.floor(Math.random() * (max - min) ) + min
     }
 
+    useEffect(() => {
+        MapService("place", "textsearch", "json", "food", userCenterSearch.geometry.location)
+      }, []);
+
     const readyMap = () => {
-        console.log(userCenterSearch.geometry.location.lat)
-        console.log(userCenterSearch.geometry.location.lng)
         setLat(userCenterSearch.geometry.location.lat)
         setLng(userCenterSearch.geometry.location.lng)
         incrID()
+        setMarkers()
         setOnMount(true)
+    }
+
+    
+
+    const setMarkers = () => {
     }
 
     const incrID = () => {
@@ -63,7 +74,6 @@ const Map = ({userCenterSearch}) => {
                 key={0}
                 coordinate={{latitude:lat, longitude:lng}}
                 title={userCenterSearch.formulated_address}
-                on
                 />
                 }
                 </MapView>} 

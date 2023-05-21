@@ -35,7 +35,7 @@ const MapSearchBar = (props) => {
                 }}
                 placeholder='Enter location to search'
                 onPress={(data, details) => {
-                    console.log(details), props.setSearchPhrase(data.description), setLocation(details.geometry.location),
+                    props.setSearchPhrase(data.description), setLocation(details.geometry.location),
                     navigation.navigate('Map', {details:details})
                 }}
                 onFail={(error) => setError(error)}

@@ -25,13 +25,19 @@
       },
       "config": {
         "googleMaps": {
-          "apiKey":
-            "AIzaSyB_QiJB3yRJv4jST1JV56pmWh3n7diSnNQ"
+          "apiKey": "AIzaSyB_QiJB3yRJv4jST1JV56pmWh3n7diSnNQ"
         }
-      } 
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+      "expo-build-properties",
+      {"android": {
+        "RNGP_ANDROID_API_KEY": "AIzaSyB_QiJB3yRJv4jST1JV56pmWh3n7diSnNQ"
+      }}]
+    ]
   }
 }
