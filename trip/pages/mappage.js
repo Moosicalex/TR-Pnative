@@ -18,7 +18,6 @@ function MapPage(props) {
     return (
         <>
         <Topbar navigation={navigation}/>
-        {console.log("details---------"+props.route.params.details)}
         <Map userCenterSearch={centerLocation}></Map>
         </>
     );
