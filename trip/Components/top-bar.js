@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Image, StyleSheet, Text, TextInput} from 'react-native';
 import SearchBar from './searchBar/searchbar';
 
+//CAN THIS WHOLE FILE BE DELETED?
+
 function Topbar() {
 
 const styles = StyleSheet.create({
